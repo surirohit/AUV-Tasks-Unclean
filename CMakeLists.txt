@@ -9,3 +9,6 @@ target_link_libraries( gate ${OpenCV_LIBS} )
 
 add_executable( split src/split.cpp )
 target_link_libraries( split ${OpenCV_LIBS} )
+
+add_executable( yaw src/yaw.cpp )
+target_link_libraries( yaw ${OpenCV_LIBS} )
