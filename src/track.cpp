@@ -72,7 +72,7 @@ int main(int argc, char **argv)
     {
         frameCount = (frameCount+1)%100;
 
-        /*if(frameCount==99)
+        if(frameCount==99)
         {
             cout<<"reset"<<endl;
             bbox = selectROI(frame, false);
@@ -82,7 +82,7 @@ int main(int argc, char **argv)
             tracker = Tracker::create(trackerType);
             tracker->init(frame, bbox);
 
-        }*/
+        }
         // Start timer
         double timer = (double)getTickCount();
 

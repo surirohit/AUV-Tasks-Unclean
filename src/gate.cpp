@@ -31,7 +31,7 @@ int main(int argc, char **argv)
 
     Mat src, dst, cdst, orig;
     bool paused = false;
-    int canny_low = 10, canny_high = 100, threshold = 50, minLineLength = 50, maxLineGap = 10;
+    int canny_low = 10, canny_high = 50, threshold = 50, minLineLength = 50, maxLineGap = 10;
     namedWindow("Trackbars");
     createTrackbar( "Canny low", "Trackbars", &canny_low, 500, on_trackbar);
     createTrackbar( "Canny high", "Trackbars", &canny_high, 500, on_trackbar);

@@ -1,6 +1,6 @@
 #include <iostream>
 #include <opencv2/opencv.hpp>
-#include "GateEdge.h"
+#include "GateFinal.h"
 
 void printUsage()
 {
@@ -23,10 +23,11 @@ int main(int argc, char **argv)
         return -1;
     }
 
-    GateEdge ob1;
+    GateFinal ob1;
     bool paused = false;
     Mat orig;
-
+    bool firstDetect = false;
+    double ctrTrue = 0, total= 0;
     while (1)
     {
         if(!paused)
@@ -35,14 +36,21 @@ int main(int argc, char **argv)
         if(orig.empty())
             break;
 
-        ob1.detectGate(orig);
-
+        if(ob1.detectGate(orig))
+        {
+            firstDetect = true;
+            ctrTrue+=1;
+        }
+        if(firstDetect)
+        {
+            total+=1;
+            cout<<ctrTrue/total<<endl;
+        }
         char c = waitKey(1);
         if(c==27)
             break;
-        if(c=='p')
+        if(c==' ')
             paused = !paused;
-
 
     }
 }
