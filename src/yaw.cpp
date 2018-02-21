@@ -77,8 +77,8 @@ int main(int argc, char **argv)
 
     Mat src, dst, cdst, orig;
     bool paused = false;
-    int canny_low = 10, canny_high = 100, threshold = 50, minLineLength = 50, maxLineGap = 10;
-
+    int canny_low = 10, canny_high = 100, threshold = 120, minLineLength = 50, maxLineGap = 20;
+    vector<double> yawVec;int ind=-1;
     namedWindow("Trackbars");
     createTrackbar( "Canny low", "Trackbars", &canny_low, 500, NULL);
     createTrackbar( "Canny high", "Trackbars", &canny_high, 500, NULL);
@@ -159,7 +159,19 @@ int main(int argc, char **argv)
             line( cdst, Point(l[0], l[1]), Point(l[2], l[3]), Scalar(255,0,0), 3, CV_AA);
         }
         currentHeading /= angleCount;
-        cout<<currentHeading<<endl;
+        if(!paused)
+        {
+            ind=(ind+1)%100;
+            if(yawVec.size()<100)
+                yawVec.push_back(currentHeading);
+            else
+                yawVec[ind] = currentHeading;
+            if(yawVec.size()==100)
+            {
+                nth_element(yawVec.begin(),yawVec.begin() + yawVec.size()/2,yawVec.end());
+                cout<<yawVec[yawVec.size()/2]<<endl;
+            }
+        }
         imshow("Lines",cdst);
 
     }

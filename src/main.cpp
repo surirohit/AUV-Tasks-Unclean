@@ -1,6 +1,6 @@
 #include <iostream>
 #include <opencv2/opencv.hpp>
-#include "GateEdge.h"
+#include "GateFinal.h"
 
 void printUsage()
 {
@@ -23,7 +23,7 @@ int main(int argc, char **argv)
         return -1;
     }
 
-    GateEdge ob1;
+    GateFinal ob1;
     bool paused = false;
     Mat orig;
 
@@ -40,9 +40,8 @@ int main(int argc, char **argv)
         char c = waitKey(1);
         if(c==27)
             break;
-        if(c=='p')
+        if(c==' ')
             paused = !paused;
-
 
     }
 }
