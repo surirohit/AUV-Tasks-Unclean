@@ -11,8 +11,7 @@ GateFinal::GateFinal()
     ddepth = CV_16S;
 };
 
-GateFinal::~GateFinal()
-{};
+GateFinal::~GateFinal(){}
 
 bool GateFinal::detectGate(Mat orig)
 {

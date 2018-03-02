@@ -43,7 +43,6 @@ int main(int argc, char **argv){
 
         GaussianBlur( orig, src, Size(3,3), 0, 0, BORDER_DEFAULT );
 
-        /// Convert it to gray
         Mat bgr[3];
         split(src,bgr);
         //cvtColor( , src_gray, CV_BGR2GRAY );
